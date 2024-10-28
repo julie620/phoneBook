@@ -29,15 +29,16 @@ public class listNode {
     } // end of ListNode constructor
 
     public int lastNameRank() {
-        lastName = lastName.toUpperCase().trim();
-        char firstLetter = lastName.charAt(0);
+        String checkLast = lastName.toUpperCase().trim();
+        char firstLetter = checkLast.charAt(0);
         int rank = (int)firstLetter;
         return rank;
     }
 
     public String toString() {
-        return "Entry: " + firstName + ", " + lastName + ", " + address + ", " + city + ", " + 
-                phoneNumber;
+        return "Name: " + firstName + " " + lastName + "\n" + 
+                "Address: " + address + ", " + city + "\n" + 
+                "Phone Number: " + phoneNumber;
     }
 
 } // end of listNode class

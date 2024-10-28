@@ -2,10 +2,12 @@ import java.util.NoSuchElementException;
 
 public class phonebookManager {
     private listNode front;
+    private static int size;
     
 
     public phonebookManager () {
         front = null;
+        size = 0;
     } // end of phonebookManager constructor
 
     // Adds the given value to the end of the list
@@ -22,6 +24,7 @@ public class phonebookManager {
             }
             current.next = new listNode (firstName, lastName, address, city, phoneNumber);
         }
+        size++;
     } // end of add method
 
 
@@ -41,15 +44,15 @@ public class phonebookManager {
         listNode current = front;
         if (index == 0) {
             // adding to an empty list
-            front = new listNode(firstName, lastName, address, city, phoneNumber);
+            front = new listNode(firstName, lastName, address, city, phoneNumber, current.next);
         }
         else {
             //inserting into an existing list
             for (int i = 0; i < index - 1; i++) {
                 current = current.next;
             }
+            current.next = new listNode(firstName, lastName, address, city, phoneNumber, current.next);
         }
-        current.next = new listNode(firstName, lastName, address, city, phoneNumber, current.next);
     } // end of addAtIndex method
 
     // Removes and returns the first value
@@ -61,6 +64,7 @@ public class phonebookManager {
         else {
             String result = front.firstName;
             front = front.next;
+            size--;
             return result;
         }
     } // end of remove method
@@ -78,6 +82,7 @@ public class phonebookManager {
             }
             current.next = current.next.next;
         }
+        size--;
     } // end of removeAtIndex method
 
     //Adds given value to list in sorted order
@@ -97,6 +102,24 @@ public class phonebookManager {
                   current.next.lastNameRank() < rank) {
                 current = current.next;
             }
+            //current = new listNode(firstName, lastName, address, city, phoneNumber);
         }
+        size++;
     }
+
+    public String printList() {
+        listNode current = front;
+        String list = "Your Phone Book";
+        for (int i = 0; i < size; i++) {
+            int entryNum = i + 1;
+            list = list.concat("\n\n" + "Entry " + entryNum + "\n" + current.toString());
+            current = current.next;
+        }
+        return list;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
 } // end of phonebookManager class

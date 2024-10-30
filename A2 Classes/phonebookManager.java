@@ -1,3 +1,8 @@
+//Name: Juliana Serrano
+//Date: 10/29/2024
+//Assignment: 2 - Phone Book
+// methods to edit phone book and return phone book information (Class 2 of 3)
+
 import java.util.NoSuchElementException;
 
 public class phonebookManager {
@@ -23,6 +28,7 @@ public class phonebookManager {
                 current = current.next;
             }
             current.next = new listNode (firstName, lastName, address, city, phoneNumber);
+            System.out.println(current.firstName);
         }
         size++;
     } // end of add method
@@ -40,7 +46,7 @@ public class phonebookManager {
 
     // Inserts the given value at the given index
     // Precondition: 0 <= index <= size ()
-    public void addAtIndex(int index, String firstName, String lastName, String address, String city, String phoneNumber) {
+    public void addIndex(int index, String firstName, String lastName, String address, String city, String phoneNumber) {
         listNode current = front;
         if (index == 0) {
             // adding to an empty list
@@ -69,7 +75,7 @@ public class phonebookManager {
         }
     } // end of remove method
 
-    public void removeAtIndex(int index) {
+    public void removeIndex(int index) {
         if (index == 0) {
             // special case: removing first element
             front = front.next;
@@ -85,28 +91,6 @@ public class phonebookManager {
         size--;
     } // end of removeAtIndex method
 
-    //Adds given value to list in sorted order
-    //Precondition: Existing elements are sorted
-    public void addSorted(String firstName, String lastName, String address, String city, String phoneNumber) {
-        String checkRank = lastName.toUpperCase().trim();
-        char firstLetter = checkRank.charAt(0);
-        int rank = (int)firstLetter;
-        if (front == null || rank <= front.lastNameRank()) {
-            //insert at front of list
-            front = new listNode(firstName, lastName, address, city, phoneNumber, front);
-        }
-        else {
-            //insert in middle of list
-            listNode current = front;
-            while(current.next != null &&
-                  current.next.lastNameRank() < rank) {
-                current = current.next;
-            }
-            //current = new listNode(firstName, lastName, address, city, phoneNumber);
-        }
-        size++;
-    }
-
     public String printList() {
         listNode current = front;
         String list = "Your Phone Book";
@@ -116,10 +100,49 @@ public class phonebookManager {
             current = current.next;
         }
         return list;
-    }
+    } // end of printList method
 
     public int getSize() {
         return size;
-    }
+    } /// end of getSize method
 
+    public String getFirst(int index) {
+        listNode current = front;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.firstName;
+    } // end of getFirstName method
+
+    public String getLast(int index) {
+        listNode current = front;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.lastName;
+    } // end of getLastName method
+
+    public String getAddress(int index) {
+        listNode current = front;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.address;
+    } // end of getAddress method
+
+    public String getCity(int index) {
+        listNode current = front;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.city;
+    } // end of getCity method
+
+    public String getPhone(int index) {
+        listNode current = front;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.phoneNumber;
+    } // end of getPhoneNumber method
 } // end of phonebookManager class

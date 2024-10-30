@@ -1,3 +1,7 @@
+//Name: Juliana Serrano
+//Date: 10/29/2024
+//Assignment: 2 - Phone Book
+// strutures nodes for list; 5 data fields for phone book entry information (Class 1 of 3)
 public class listNode {
 
     String firstName;
@@ -5,7 +9,6 @@ public class listNode {
     String address;
     String city;
     String phoneNumber;
-    //int data;
     listNode next;
 
     public listNode(String firstName, String lastName, String address, String city, String phoneNumber) {
@@ -14,7 +17,6 @@ public class listNode {
         this.address = address;
         this.city = city;
         this.phoneNumber = phoneNumber;
-        //this.data = data;
         this.next = null;
     } // end of ListNode constructor
 
@@ -24,21 +26,12 @@ public class listNode {
         this.address = address;
         this.city = city;
         this.phoneNumber = phoneNumber;
-        //this.data = data;
         this.next = next;
     } // end of ListNode constructor
 
-    public int lastNameRank() {
-        String checkLast = lastName.toUpperCase().trim();
-        char firstLetter = checkLast.charAt(0);
-        int rank = (int)firstLetter;
-        return rank;
-    }
-
+    //returns node in phone book format
     public String toString() {
-        return "Name: " + firstName + " " + lastName + "\n" + 
-                "Address: " + address + ", " + city + "\n" + 
-                "Phone Number: " + phoneNumber;
-    }
-
+        return "First Name: " + firstName + "\nLast Name: " + lastName + "\nAddress: " + address + 
+        "\nCity: " + city + "\nPhone Number: " + phoneNumber;
+    } // end of toString method
 } // end of listNode class

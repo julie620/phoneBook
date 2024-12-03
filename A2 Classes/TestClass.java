@@ -38,14 +38,12 @@ public class TestClass {
         switch (response) {
             case 1: // Add Entry
                 addOpt(size, myPhoneBook);
-                System.out.println(myPhoneBook.getSize());
                 break;
             case 2: // Delete Entry
                 removeOpt(myPhoneBook);
                 break;
             case 3:// Modify Entry
                 modifyOpt(myPhoneBook);
-                System.out.println(myPhoneBook.getSize());
                 break;
             case 4: // Display Entries
                 System.out.println(myPhoneBook.printList());

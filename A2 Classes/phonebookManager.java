@@ -28,7 +28,6 @@ public class phonebookManager {
                 current = current.next;
             }
             current.next = new listNode (firstName, lastName, address, city, phoneNumber);
-            System.out.println(current.firstName);
         }
         size++;
     } // end of add method
